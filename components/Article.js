@@ -114,3 +114,53 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+const articleMaker = (article) => {
+  const newArticle = document.createElement('div');
+  newArticle.classList.add('article');
+
+  const h2 = document.createElement('h2');
+  h2.classList.add('h2');
+  h2.textContent = article.title;
+
+  const date = document.createElement('p');
+  date.classList.add('date');
+  date.textContent = article.date;
+
+  const p1 = document.createElement('p');
+  p1.textContent = article.firstParagraph;
+
+  const p2 = document.createElement('p');
+  p2.textContent = article.secondParagraph;
+
+  const p3 = document.createElement('p');
+  p3.textContent = article.thirdParagraph;
+  const span = document.createElement('button');
+  span.textContent = '+';
+  span.classList.add('expandButton');
+  span.addEventListener( 'toggle' , event => event.target = document.querySelector('.article-open'))
+  newArticle.appendChild(h2);
+  newArticle.appendChild(date);
+  newArticle.appendChild(p1);
+  newArticle.appendChild(p2);
+  newArticle.appendChild(p3);
+  newArticle.appendChild(span);
+
+  return newArticle;
+}
+
+data[4] = {
+  title: 'How to create Components',
+  date: 'Jun 10th, 2020',
+  firstParagraph:' I AM GROOT',
+  secondParagraph: ' I AM GROOT I AM GROOTI AM GROOT I AM GROOT GROOT GROOT',
+  thirdParagraph: 'GROOOOOOOOOOOOOOOOOOOOOOOT'
+}
+
+finalData = data.forEach( news => {
+  let index = document.querySelector('.articles');
+  index.appendChild(articleMaker(news));
+})
+
+console.log(finalData)
+
