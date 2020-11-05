@@ -135,10 +135,10 @@ const articleMaker = (article) => {
 
   const p3 = document.createElement('p');
   p3.textContent = article.thirdParagraph;
-  const span = document.createElement('button');
+  const span = document.createElement('span');
   span.textContent = '+';
   span.classList.add('expandButton');
-  span.addEventListener( 'toggle' , event => event.target = document.querySelector('.article-open'))
+  span.classList.toggle('article-open');
   newArticle.appendChild(h2);
   newArticle.appendChild(date);
   newArticle.appendChild(p1);
@@ -157,10 +157,10 @@ data[4] = {
   thirdParagraph: 'GROOOOOOOOOOOOOOOOOOOOOOOT'
 }
 
-finalData = data.forEach( news => {
+data.forEach( news => {
   let index = document.querySelector('.articles');
   index.appendChild(articleMaker(news));
 })
 
-console.log(finalData)
+console.log(articleMaker(data))
 
